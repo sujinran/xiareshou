@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -16,16 +16,16 @@
 </head>
 <body>
 <div class="head">15秒刷新一下页面
-<div class="row">1. <input type="text" id="url1" size="50" value="输入文字"> <button type="button" class="btn" data-no="1" data-stat="0">开始~</button></div>
-<div class="row">2. <input type="text" id="url2" size="50" value="输入文字"> <button type="button" class="btn" data-no="2" data-stat="0">开始~</button></div>
-<div class="row">3. <input type="text" id="url3" size="50" value="输入文字"> <button type="button" class="btn" data-no="3" data-stat="0">开始~</button></div>
-<div class="row">4. <input type="text" id="url4" size="50" value="输入文字"> <button type="button" class="btn" data-no="4" data-stat="0">开始~</button></div>
-<div class="row">5. <input type="text" id="url5" size="50" value="输入文字"> <button type="button" class="btn" data-no="5" data-stat="0">开始~</button></div>
-<div class="row">6. <input type="text" id="url6" size="50" value="输入文字"> <button type="button" class="btn" data-no="6" data-stat="0">开始~</button></div>
-<div class="row">7. <input type="text" id="url7" size="50" value="输入文字"> <button type="button" class="btn" data-no="7" data-stat="0">开始~</button></div>
-<div class="row">8. <input type="text" id="url8" size="50" value="输入文字"> <button type="button" class="btn" data-no="8" data-stat="0">开始~</button></div>
-<div class="row">9. <input type="text" id="url9" size="50" value="输入文字"> <button type="button" class="btn" data-no="9" data-stat="0">开始~</button></div>
-<div class="row">10. <input type="text" id="url10" size="50" value="输入文字"> <button type="button" class="btn" data-no="10" data-stat="0">开始~</button></div>
+<div class="row">1. <input type="text" id="url1" size="50" value="请输入搜索内容"> <button type="button" class="btn" data-no="1" data-stat="0">开始~</button></div>
+<div class="row">2. <input type="text" id="url2" size="50" value="请输入搜索内容"> <button type="button" class="btn" data-no="2" data-stat="0">开始~</button></div>
+<div class="row">3. <input type="text" id="url3" size="50" value="请输入搜索内容"> <button type="button" class="btn" data-no="3" data-stat="0">开始~</button></div>
+<div class="row">4. <input type="text" id="url4" size="50" value="请输入搜索内容"> <button type="button" class="btn" data-no="4" data-stat="0">开始~</button></div>
+<div class="row">5. <input type="text" id="url5" size="50" value="请输入搜索内容"> <button type="button" class="btn" data-no="5" data-stat="0">开始~</button></div>
+<div class="row">6. <input type="text" id="url6" size="50" value="请输入搜索内容"> <button type="button" class="btn" data-no="6" data-stat="0">开始~</button></div>
+<div class="row">7. <input type="text" id="url7" size="50" value="请输入搜索内容"> <button type="button" class="btn" data-no="7" data-stat="0">开始~</button></div>
+<div class="row">8. <input type="text" id="url8" size="50" value="请输入搜索内容"> <button type="button" class="btn" data-no="8" data-stat="0">开始~</button></div>
+<div class="row">9. <input type="text" id="url9" size="50" value="请输入搜索内容"> <button type="button" class="btn" data-no="9" data-stat="0">开始~</button></div>
+<div class="row">10. <input type="text" id="url10" size="50" value="请输入搜索内容"> <button type="button" class="btn" data-no="10" data-stat="0">开始~</button></div>
 </div>
 <div class="wins">
 <div class="box" id="box1"></div>
@@ -41,18 +41,21 @@
 </div>
 <script>
 $(function(){
+	
 	var timer={};
 	$(".btn").on("click",function(){
-		var aaa="https://s.weibo.com/weibo?q=";
-		var bbb =aaa+$("#url"+no).val();
 		var no=$(this).data("no"),stat=$(this).data("stat");
 		console.log(stat);
+		var aaa="https://s.weibo.com/weibo?q=";
+		var bbb =aaa+$("#url"+no).val();
 		if(stat==1){
 			$("#box"+no).html('');
 			$(this).data('stat',0).text('开始~');
 			clearInterval(timer['t'+no]);
 		}else{
-			if($("#url"+no).val()==""){alert("输入文字");return false;}
+			
+			if(bbb==""){alert("请输入搜索内容");return false;}
+			 
 			$("#box"+no).html('<iframe id="frame'+no+'" src="'+bbb+'" />');
 			$(this).data('stat',1).text('进行中,点击停止');
 			timer['t'+no]=setInterval(function(){
